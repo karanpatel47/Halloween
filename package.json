@@ -1,0 +1,4 @@
+{"name":"halloween-ticketing","version":"1.0.0","type":"module","private":true,
+"scripts":{"start":"node server/index.js","dev":"node --watch server/index.js","migrate":"node server/migrate.js","test":"node --test"},
+"engines":{"node":">=20"},
+"dependencies":{"dotenv":"^16.4.5","express":"^4.19.2","express-rate-limit":"^7.4.0","pg":"^8.12.0","qrcode":"^1.5.4","razorpay":"^2.9.4"}}
