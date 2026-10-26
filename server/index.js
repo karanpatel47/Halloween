@@ -83,14 +83,19 @@ app.get('/ticket/:ref', limiter, async (req, res) => {
   const { rows } = await pool.query("SELECT * FROM bookings WHERE reference=$1 AND status='paid'", [req.params.ref]);
   const b = rows[0]; if (!b) return res.status(404).send('Ticket not found or payment not confirmed.');
   const qr = await QRCode.toDataURL(`${BASE}/ticket/${b.reference}`, { margin: 1, width: 240 });
-  res.send(`<!doctype html><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Ticket ${b.reference}</title>
-<style>body{margin:0;background:#050304;color:#efe6d4;font:17px/1.6 system-ui;display:grid;place-items:center;min-height:100vh;padding:20px}
-.t{max-width:380px;width:100%;border:1px solid #b3121b;padding:28px;text-align:center;box-shadow:0 0 40px #b3121b55;background:#0d0708}
-h1{font:700 40px/1 Georgia,serif;margin:0 0 6px}em{color:#e2262f}img{background:#fff;padding:8px;margin:16px 0}.r{font:700 22px monospace;letter-spacing:.1em}
+  res.send(`<!doctype html><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><title>Ticket ${b.reference} — ${EVENT.name}</title>
+<style>body{margin:0;background:#060204;color:#efe6d4;font:17px/1.6 system-ui;display:grid;place-items:center;min-height:100vh;padding:20px}
+.t{max-width:400px;width:100%;border:1px solid #b3121b;padding:28px;text-align:center;box-shadow:0 0 50px rgba(179,18,27,0.45);background:#0d0507;border-radius:6px}
+h1{font:700 36px/1.1 Georgia,serif;margin:0 0 4px;color:#efe6d4}em{color:#e2262f;font-style:italic;display:block;font-size:19px;margin:4px 0 6px}.tagline{color:#e5c378;font-size:13px;letter-spacing:.08em;text-transform:uppercase;margin:6px 0 12px;font-weight:600}
+img{background:#fff;padding:8px;margin:14px 0;border-radius:4px}.r{font:700 22px monospace;letter-spacing:.12em;color:#e5c378}
 .ok{font-size:44px;animation:pop .6s cubic-bezier(.2,1.6,.4,1)}@keyframes pop{from{transform:scale(0)}}
-button{background:#b3121b;color:#fff;border:0;padding:12px 24px;font-size:15px;cursor:pointer}@media print{button{display:none}}</style>
-<div class=t><div class=ok>✅</div><p>You’re in, ${esc(b.name)}.</p><h1>Halloween Party <em>with Abhiii…</em></h1>
-<p>${EVENT.date} · ${EVENT.time}<br>${EVENT.venue}</p><img src="${qr}" alt="Ticket QR code" width=200 height=200>
+.dress{color:#c9b896;font-size:14px;margin:6px 0;font-style:italic}
+button{background:#b3121b;color:#fff;border:0;padding:12px 24px;font-size:15px;cursor:pointer;border-radius:3px;margin-top:10px}@media print{button{display:none}}</style>
+<div class=t><div class=ok>✅</div><p>You’re in, ${esc(b.name)}.</p><h1>Hallo Haseeno</h1><em>A Halloween Party with Abhii</em>
+<div class=tagline>${EVENT.tagline}</div>
+<p style="margin:8px 0">${EVENT.date} · ${EVENT.time}<br>${EVENT.venue}</p>
+<div class=dress>Dress code: ${EVENT.dress}</div>
+<img src="${qr}" alt="Ticket QR code" width=200 height=200>
 <div class=r>${b.reference}</div><p>${b.quantity} ticket${b.quantity > 1 ? 's' : ''} · The Weekend Society</p><button onclick="print()">Download / print ticket</button></div>`);
 });
 
