@@ -3,7 +3,7 @@ import { validateBooking, priceFor, checkoutSignatureValid, webhookSignatureVali
 const good = { name: 'Asha Patel', email: 'a@b.co', phone: '9876543210', quantity: 2 };
 const sign = (d, k) => crypto.createHmac('sha256', k).update(d).digest('hex');
 
-test('server-side pricing in paise', () => { assert.equal(PRICE_PAISE, 29900); assert.equal(priceFor(1), 29900); assert.equal(priceFor(3), 89700); });
+test('server-side pricing in paise', () => { assert.equal(PRICE_PAISE, 19900); assert.equal(priceFor(1), 19900); assert.equal(priceFor(3), 59700); });
 test('order validation accepts good input, rejects bad', () => {
   assert.ok(validateBooking(good).ok);
   for (const bad of [{ ...good, quantity: 0 }, { ...good, quantity: 11 }, { ...good, quantity: 1.5 }, { ...good, email: 'x' }, { ...good, phone: '123' }, { ...good, name: '' }])

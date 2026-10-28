@@ -1,5 +1,5 @@
 import crypto from 'node:crypto';
-export const PRICE_PAISE = 29900, MAX_TICKETS = 10;
+export const PRICE_PAISE = 19900, MAX_TICKETS = 10;
 export const EVENT = { name: 'Hallo Haseeno', subtitle: 'A Halloween Party with Abhii', tagline: 'Vadodara’s First Bolly Tech Halloween Party', date: 'Friday, 30 October 2026', time: '7:00 PM onwards', venue: 'The Grove Club & Cafe, Sevasi, Vadodara', dress: 'Spooky and Gothic' };
 
 export function validateBooking(b = {}) {

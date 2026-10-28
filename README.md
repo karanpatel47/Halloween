@@ -1,7 +1,7 @@
 # Hallo Haseeno: A Halloween Party with Abhii — Ticketing (The Weekend Society)
 
 Dark-themed landing page + invitation gate, Razorpay checkout, Express API, PostgreSQL, QR tickets.
-Event: Friday, 30 October 2026, 7:00 PM onwards, The Grove Club & Cafe, Sevasi, Vadodara. Entry ₹299 (price lives in `server/lib.js`).
+Event: Friday, 30 October 2026, 7:00 PM onwards, The Grove Club & Cafe, Sevasi, Vadodara. Entry ₹199 (price lives in `server/lib.js`).
 
 
 ## Run locally
